@@ -1,11 +1,12 @@
 ﻿using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.ServiceRequests
 {

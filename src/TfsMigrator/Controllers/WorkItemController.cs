@@ -1,9 +1,8 @@
 ﻿using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
 using TfsMigrator.ServiceRequests;
-using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,6 +12,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TfsMigrator.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.Controllers
 {
@@ -217,7 +218,7 @@ namespace TfsMigrator.Controllers
             {
                 foreach (var attachmentId in attachmentRepository.GetAttachmentIds())
                 {
-                    var attachment = await attachmentRepository.GetAttachment(attachmentId);
+                    var attachment = attachmentRepository.GetAttachment(attachmentId);
                     var workItemId = workItemMigrationRepository.GetMigratedWorkId(attachment.OriginalWorkId);
                     if (!workItemId.HasValue)
                     {
@@ -361,7 +362,7 @@ namespace TfsMigrator.Controllers
             Parallel.ForEach(workIds, (workId) =>
             {
                 var index = Interlocked.Increment(ref counter);
-                Debug.WriteLine($"{index}/{total} [{Decimal.Round((index / total) * 100, 2)}%] Migrating Work Item: " + workId);
+                Debug.WriteLine($"{index}/{total} [{Math.Round((index / total) * 100, 2)}%] Migrating Work Item: " + workId);
 
                 if (addLinks)
                     migratedWorkItems.Push(LinkWorkItem(workId).Result);
@@ -389,7 +390,7 @@ namespace TfsMigrator.Controllers
 //            Parallel.ForEach(workIds, (workId) =>
             {
                 var index = Interlocked.Increment(ref counter);
-                Debug.WriteLine($"{index}/{total} [{Decimal.Round((index / total) * 100, 2)}%] Extract Attachment: " + workId);
+                Debug.WriteLine($"{index}/{total} [{Math.Round((index / total) * 100, 2)}%] Extract Attachment: " + workId);
 
                 var attachments = ExtractAttachment(workId).Result;
                 if (attachments.Any())

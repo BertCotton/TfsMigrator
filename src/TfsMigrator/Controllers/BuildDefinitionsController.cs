@@ -1,6 +1,6 @@
 ﻿using TfsMigrator.Data;
 using TfsMigrator.ServiceRequests;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace TfsMigrator.Controllers
         public IActionResult BuildDefinitions(List<int> definitionIds)
         {
             if (!definitionIds.Any())
-                return HttpNotFound();
+                return NotFound();
 
             using (var requestData = tfsRequest.GetHttpClient())
             {

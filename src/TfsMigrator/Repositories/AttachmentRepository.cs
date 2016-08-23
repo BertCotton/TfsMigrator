@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.Repositories
 {
@@ -44,19 +44,19 @@ namespace TfsMigrator.Repositories
             }
         }
 
-        public async Task<Attachment> GetAttachment(Guid guid)
+        public Attachment GetAttachment(Guid guid)
         {
             using (var context = new DataContext(appSettings))
             {
-                return await context.Attachments.FirstOrDefaultAsync(a => a.GUID == guid);
+                return context.Attachments.FirstOrDefault(a => a.GUID == guid);
             }
         }
 
-        public async Task<Attachment> GetAttachment(int id)
+        public Attachment GetAttachment(int id)
         {
             using (var context = new DataContext(appSettings))
             {
-                return await context.Attachments.FirstOrDefaultAsync(a => a.Id == id);
+                return context.Attachments.FirstOrDefault(a => a.Id == id);
             }
         }
 

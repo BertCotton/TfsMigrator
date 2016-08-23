@@ -1,11 +1,12 @@
 ﻿using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
 using TfsMigrator.ServiceRequests;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.Controllers
 {

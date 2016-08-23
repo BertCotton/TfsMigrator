@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TfsMigrator.Infrastructure;
 
-namespace TfsMigrator.Infrastructure
+namespace TfsMigration.Infrastructure
 {
     public class AppSettings
     {

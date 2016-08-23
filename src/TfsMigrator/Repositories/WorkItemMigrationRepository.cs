@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using TfsMigrator.Data;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.Infrastructure
 {

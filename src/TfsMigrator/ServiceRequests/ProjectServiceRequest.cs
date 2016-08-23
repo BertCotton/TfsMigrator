@@ -1,11 +1,12 @@
 ﻿using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.ServiceRequests
 {

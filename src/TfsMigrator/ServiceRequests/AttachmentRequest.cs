@@ -11,8 +11,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TfsMigrator.Data;
 using TfsMigrator.Infrastructure;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using TfsMigration.Infrastructure;
 
 namespace TfsMigrator.ServiceRequests
 {
